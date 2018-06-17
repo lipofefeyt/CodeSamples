@@ -2,7 +2,7 @@
  * server.c
  *
  *  Created on: Jun 3, 2018
- *      Author: lipofefeyt
+ *	  Author: lipofefeyt
  */
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -25,32 +25,32 @@
 int main(int argc, char *argv[]) {
 
 	/* Some useful variables */
-    int listenfd = 0, connfd = 0;
+	int listenfd = 0, connfd = 0;
 	int num_clients = 0;
-    char sendBuff[1025];
+	char sendBuff[1025];
 
 	/* Connection variables */
-    struct sockaddr_in serv_addr;
-    time_t ticks;
+	struct sockaddr_in serv_addr;
+	time_t ticks;
 
 	/* Initialize the socket descriptor */
-    listenfd = socket(AF_INET, SOCK_STREAM, 0);
-    memset(&serv_addr, '0', sizeof(serv_addr));
-    memset(sendBuff, '0', sizeof(sendBuff));
+	listenfd = socket(AF_INET, SOCK_STREAM, 0);
+	memset(&serv_addr, '0', sizeof(serv_addr));
+	memset(sendBuff, '0', sizeof(sendBuff));
 
 	/* Fill the server's address completely */
-    serv_addr.sin_family = AF_INET;
-    serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
-    serv_addr.sin_port = htons(5000);
+	serv_addr.sin_family = AF_INET;
+	serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+	serv_addr.sin_port = htons(5000);
 
 	/* Bind the socket to the filled address */
-    bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr));
+	bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr));
 
 	/* So start listening max to 10 connections */
-    listen(listenfd, 10);
+	listen(listenfd, 10);
 
 	/* Wait for clients to connect */
-    while(1)
+	while(1)
 	{
 		printf("Listening.. \n");	
 
