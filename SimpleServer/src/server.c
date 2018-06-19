@@ -1,7 +1,7 @@
 /*
  * server.c
  *
- *  Created on: Jun 3, 2018
+ *  Created on: 03/06/2018
  *	  Author: lipofefeyt
  */
 #include <sys/socket.h>
@@ -14,6 +14,8 @@
 #include <string.h>
 #include <sys/types.h>
 #include <time.h>
+
+#include "client.h"
 
 /* 
  * Function:	main
