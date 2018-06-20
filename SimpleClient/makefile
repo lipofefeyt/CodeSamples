@@ -28,6 +28,9 @@ $(ODIR)/%.o: $(SDIR)/%.c $(DEPS)
 client: $(OBJ)
 	$(CC) -o $(BDIR)/$@ $^ $(CFLAGS) $(LIBS)
 
+# General rule
+all: client
+
 # Don't interpret any file called "clean"!
 .PHONY: clean
 
