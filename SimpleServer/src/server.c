@@ -15,7 +15,7 @@
 #include <sys/types.h>
 #include <time.h>
 
-#include "client.h"
+#include "server.h"
 
 /* 
  * Function:	main
@@ -58,8 +58,6 @@ int main(int argc, char *argv[]) {
 
 		/* Accept clients */
 		connfd = accept(listenfd, (struct sockaddr*)NULL, NULL);
-
-		/* printf("CONNFD.. %d\n", connfd);	*/
 
 		/* Count number of clients */
 		if(connfd > 0){
