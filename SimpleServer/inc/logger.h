@@ -20,4 +20,4 @@ typedef struct Logger {
  * Initialize the Logger object.
  *  
  */
-Logger* create_logger(void);
+void create_logger(void);

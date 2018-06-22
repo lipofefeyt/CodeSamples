@@ -16,6 +16,10 @@
 #include <time.h>
 
 #include "server.h"
+#include "logger.h"
+
+/* Declare the global Logger */
+Logger* logger;
 
 /* 
  * Function:	main
@@ -25,6 +29,9 @@
  *  
  */
 int main(int argc, char *argv[]) {
+
+	/* Init the Logger */
+	create_logger();
 
 	/* Some useful variables */
 	int listenfd = 0, connfd = 0;

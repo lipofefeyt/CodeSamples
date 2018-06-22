@@ -15,7 +15,7 @@
 #include "logger.h"
 
 /* Global Logger object */
-extern Logger logger;
+extern Logger* logger;
 
 /* 
  * Function:	main
@@ -26,13 +26,9 @@ extern Logger logger;
 void create_logger(void) {
 
 	/* Create and initialize the Logger */
-	logger = malloc(sizeof(Logger*));
-	logger.f_name = "Test.log"
+	logger = (Logger*)malloc(sizeof(Logger*));
+	memcpy(logger->f_name, "Test.log", 9);
 
 	/* Open the log file */
-	logger.f_pointer = fopen(,"w+");
-	
-	
-
-	return NULL;
+	logger->f_pointer = fopen(logger->f_name ,"w+");
 }

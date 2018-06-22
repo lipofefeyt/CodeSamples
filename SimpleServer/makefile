@@ -13,11 +13,11 @@ CFLAGS	=	-I$(IDIR) -Wall -ansi -g
 LIBS	=	-lm
 
 # Specify dependencies
-_DEPS	=	server.h
+_DEPS	=	server.h logger.h
 DEPS	=	$(patsubst %,$(IDIR)/%,$(_DEPS))
 
 # Specify objects/shared objects
-_OBJ	=	server.o
+_OBJ	=	server.o logger.o
 OBJ		=	$(patsubst %,$(ODIR)/%,$(_OBJ))
 
 # Rules for objects
