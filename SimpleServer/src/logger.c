@@ -27,9 +27,10 @@ void create_logger(void) {
 
 	/* Create and initialize the Logger */
 	logger = malloc(sizeof(Logger*));
+	logger.f_name = "Test.log"
 
 	/* Open the log file */
-	logger.f_pointer = 
+	logger.f_pointer = fopen(,"w+");
 	
 	
 
