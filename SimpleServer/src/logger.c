@@ -14,15 +14,24 @@
 
 #include "logger.h"
 
+/* Global Logger object */
+extern Logger logger;
+
 /* 
  * Function:	main
  * ----------------------------
- * Main function to run a server and make it listen to all the available 
- * interfaces (INADDR_ANY).
+ * Initialize the Logger object.
  *  
  */
-Logger* create_logger(void) {
+void create_logger(void) {
 
+	/* Create and initialize the Logger */
+	logger = malloc(sizeof(Logger*));
+
+	/* Open the log file */
+	logger.f_pointer = 
+	
+	
 
 	return NULL;
 }

@@ -12,3 +12,12 @@ typedef struct Logger {
 	char f_name[32];
 
 } Logger;
+
+
+/* 
+ * Function:	main
+ * ----------------------------
+ * Initialize the Logger object.
+ *  
+ */
+Logger* create_logger(void);
