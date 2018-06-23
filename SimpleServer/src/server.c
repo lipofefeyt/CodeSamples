@@ -4,21 +4,11 @@
  *  Created on: 03/06/2018
  *	  Author: lipofefeyt
  */
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <errno.h>
-#include <string.h>
-#include <sys/types.h>
-#include <time.h>
-
 #include "server.h"
 #include "logger.h"
+#include "signals.h"
 
-/* Declare the global Logger */
+/* WLink with global Logger */
 Logger* logger;
 
 /* 
@@ -30,8 +20,13 @@ Logger* logger;
  */
 int main(int argc, char *argv[]) {
 
+	/* Handle a SIGINT interrupt */
+	signal(SIGINT, handle_sigint);
+
 	/* Init the Logger */
 	create_logger();
+
+	log_msg("=== Log File ===");
 
 	/* Some useful variables */
 	int listenfd = 0, connfd = 0;
@@ -59,15 +54,15 @@ int main(int argc, char *argv[]) {
 	listen(listenfd, 10);
 
 	/* Wait for clients to connect */
-	while(1)
-	{
+	while(1) {
+ 
 		printf("Listening.. \n");	
 
 		/* Accept clients */
 		connfd = accept(listenfd, (struct sockaddr*)NULL, NULL);
 
 		/* Count number of clients */
-		if(connfd > 0){
+		if(connfd > 0) {
 			num_clients++;
 			printf("Client number %d\n", num_clients);
 		}

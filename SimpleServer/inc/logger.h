@@ -5,7 +5,9 @@
  *	  Author: lipofefeyt
  */
 
+#include <stdio.h>
 
+/* Define a Logger object */
 typedef struct Logger {
 
 	FILE* f_pointer;		/* The logger fp */
@@ -13,11 +15,24 @@ typedef struct Logger {
 
 } Logger;
 
+/* Global Logger object */
+extern Logger* logger;
 
 /* 
- * Function:	main
+ * Function:	create_logger
  * ----------------------------
  * Initialize the Logger object.
  *  
  */
 void create_logger(void);
+
+/* 
+ * Function:	log_msg
+ * ----------------------------
+ * Logs the message to thw log file
+ * 
+ * Params:
+ * @msg The message to be written
+ *  
+ */
+int log_msg(char* msg);

@@ -14,11 +14,8 @@
 
 #include "logger.h"
 
-/* Global Logger object */
-extern Logger* logger;
-
 /* 
- * Function:	main
+ * Function:	create_logger
  * ----------------------------
  * Initialize the Logger object.
  *  
@@ -31,4 +28,21 @@ void create_logger(void) {
 
 	/* Open the log file */
 	logger->f_pointer = fopen(logger->f_name ,"w+");
+}
+
+/* 
+ * Function:	log_msg
+ * ----------------------------
+ * Logs the message to thw log file
+ * 
+ * Params:
+ * @msg The message to be written
+ *  
+ */
+int log_msg(char* msg) {
+
+	/* Write to the file */
+	fprintf(logger->f_pointer, msg);
+
+	return 1;
 }
