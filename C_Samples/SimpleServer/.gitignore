@@ -1,5 +1,3 @@
-# Ignore all object files
-*.o
-
-# Ignore the binaries
+# Ignore the following folders
 bin/*
+obj/*
