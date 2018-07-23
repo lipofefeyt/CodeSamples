@@ -1,11 +1,17 @@
 /*
- * logger.h
+ *	@Name:		logger.h
  *
- *  Created on: 20/06/2018
- *	  Author: lipofefeyt
+ *	@Author:	lipofefeyt
+ *  @Date:		20/06/2018
  */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <errno.h>
+#include <string.h>
+#include <sys/types.h>
+#include <time.h>
 
 /* Define a Logger object */
 typedef struct Logger {
@@ -25,6 +31,14 @@ extern Logger* logger;
  *  
  */
 void create_logger(void);
+
+/* 
+ * Function:	delete_logger
+ * ----------------------------
+ * Delete the Logger object.
+ *  
+ */
+void delete_logger(void);
 
 /* 
  * Function:	log_msg

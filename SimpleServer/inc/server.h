@@ -1,8 +1,8 @@
 /*
- * server.h
+ *	@Name:		server.h
  *
- *  Created on: 20/06/2018
- *	  Author: lipofefeyt
+ *	@Author:	lipofefeyt
+ *  @Date:		20/06/2018
  */
 
 #include <sys/socket.h>
@@ -16,6 +16,15 @@
 #include <string.h>
 #include <sys/types.h>
 #include <time.h>
+
+/* 
+ * Function:	read_config
+ * ----------------------------
+ * Function that reads the current server configuration from an input file.
+ *  
+ */
+void read_config();
+
 
 /* 
  * Function:	main

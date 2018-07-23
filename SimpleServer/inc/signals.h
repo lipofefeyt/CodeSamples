@@ -1,9 +1,10 @@
 /*
- * signals.h
+ *	@Name:		signals.h
  *
- *  Created on: 23/06/2018
- *	  Author: lipofefeyt
+ *	@Author:	lipofefeyt
+ *  @Date:		23/06/2018
  */
+
 #define SIGHUP  1   /* Hangup the process */ 
 #define SIGINT  2   /* Interrupt the process */ 
 #define SIGQUIT 3   /* Quit the process */ 

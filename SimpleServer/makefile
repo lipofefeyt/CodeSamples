@@ -1,3 +1,10 @@
+#
+#	@Name:		makefile
+#
+#	@Author:	lipofefeyt	
+#	@Date:		03/06/2018
+#
+
 # Typical directories to use
 BDIR 	=	bin
 IDIR 	=	inc
@@ -13,11 +20,11 @@ CFLAGS	=	-I$(IDIR) -Wall -ansi -g
 LIBS	=	-lm
 
 # Specify dependencies
-_DEPS	=	server.h logger.h signals.h
+_DEPS	=	*.h
 DEPS	=	$(patsubst %,$(IDIR)/%,$(_DEPS))
 
 # Specify objects/shared objects
-_OBJ	=	server.o logger.o signals.o
+_OBJ	=	server.o logger.o signals.o timer.o
 OBJ		=	$(patsubst %,$(ODIR)/%,$(_OBJ))
 
 # Rules for objects

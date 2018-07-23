@@ -1,15 +1,28 @@
 /*
- * server.c
+ *	@Name:		server.c
  *
- *  Created on: 03/06/2018
- *	  Author: lipofefeyt
+ *	@Author:	lipofefeyt
+ *  @Date:		03/06/2018
  */
+
 #include "server.h"
 #include "logger.h"
+#include "timer.h"
 #include "signals.h"
 
-/* WLink with global Logger */
+/* Link with global Logger */
 Logger* logger;
+Timer* timer;
+
+/* 
+ * Function:	read_config
+ * ----------------------------
+ * Function that reads the current server configuration from an input file.
+ *  
+ */
+void read_config() {
+	/* TODO */
+}
 
 /* 
  * Function:	main
@@ -77,6 +90,9 @@ int main(int argc, char *argv[]) {
 		sleep(1);
 	}
 	
+	/* Delete the logger */
+	delete_logger();
+
 	return 0;	
 }
 

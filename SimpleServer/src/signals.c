@@ -1,8 +1,8 @@
 /*
- * signals.c
+ *	@Name:		signals.c
  *
- *  Created on: 23/06/2018
- *	  Author: lipofefeyt
+ *	@Author:	lipofefeyt
+ *  @Date:		23/06/2018
  */
 
 #include "logger.h"
@@ -23,7 +23,8 @@ void handle_sigint() {
 		fclose(logger->f_pointer);
 	}
 
-	printf("SIGINT!\n");
+	printf("Signal SIGINT handled. Program will now exit...\n");
 
+	/* Terminate the program */
 	exit(-1);
 }

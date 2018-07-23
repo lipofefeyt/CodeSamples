@@ -1,16 +1,9 @@
 /*
- * logger.c
+ *	@Name:		logger.c
  *
- *  Created on: 20/06/2018
- *	  Author: lipofefeyt
+ *	@Author:	lipofefeyt
+ *  @Date:		20/06/2018
  */
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <errno.h>
-#include <string.h>
-#include <sys/types.h>
-#include <time.h>
 
 #include "logger.h"
 
@@ -28,6 +21,27 @@ void create_logger(void) {
 
 	/* Open the log file */
 	logger->f_pointer = fopen(logger->f_name ,"w+");
+}
+
+/* 
+ * Function:	delete_logger
+ * ----------------------------
+ * Delete the Logger object.
+ *  
+ */
+void delete_logger(void) {
+
+	/* Check if it's not NULL */
+	if(logger != NULL) { 
+
+		/* Close any open file if possible */
+		if(logger->f_pointer != NULL) {
+			fclose(logger->f_pointer);
+		}
+
+		/* Deallocate all memory */
+		free(logger);
+	}
 }
 
 /* 
