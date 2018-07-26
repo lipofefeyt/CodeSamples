@@ -25,28 +25,28 @@ typedef struct Logger {
 extern Logger* logger;
 
 /* 
- * Function:	create_logger
+ * @Function:	create_logger
  * ----------------------------
- * Initialize the Logger object.
+ * @Brief:		Initialize the Logger object.
  *  
  */
-void create_logger(void);
+void create_logger (void);
 
 /* 
- * Function:	delete_logger
+ * @Function:	delete_logger
  * ----------------------------
- * Delete the Logger object.
+ * @Brief:		Delete the Logger object.
  *  
  */
-void delete_logger(void);
+void delete_logger (void);
 
 /* 
- * Function:	log_msg
+ * @Function:	log_msg
  * ----------------------------
- * Logs the message to thw log file
+ * @Brief:		Logs the message to thw log file
  * 
- * Params:
- * @msg The message to be written
+ * @Params:
+ * msg:			The message to be logged
  *  
  */
-int log_msg(char* msg);
+int log_msg (char* msg);

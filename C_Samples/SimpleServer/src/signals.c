@@ -12,12 +12,12 @@
 Logger* logger;
 
 /* 
- * Function:	handle_sigint
+ * @Function:	handle_sigint
  * ----------------------------
- * Initialize the Logger object.
- *  
+ * @Brief:		Initialize the Logger object.
+ * 
  */
-void handle_sigint() {
+void handle_sigint () {
 
 	if(logger->f_pointer != NULL) {
 		fclose(logger->f_pointer);

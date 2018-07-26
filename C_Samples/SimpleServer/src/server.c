@@ -15,12 +15,13 @@ Logger* logger;
 Timer* timer;
 
 /* 
- * Function:	read_config
+ * @Function:	read_config
  * ----------------------------
- * Function that reads the current server configuration from an input file.
+ * @Brief:		Function that reads the current server configuration from an 
+ * 				input file.
  *  
  */
-void read_config() {
+void read_config (void) {
 	/* TODO */
 }
 
@@ -31,7 +32,7 @@ void read_config() {
  * interfaces (INADDR_ANY).
  *  
  */
-int main(int argc, char *argv[]) {
+int main (int argc, char *argv[]) {
 
 	/* Handle a SIGINT interrupt */
 	signal(SIGINT, handle_sigint);
@@ -39,7 +40,8 @@ int main(int argc, char *argv[]) {
 	/* Init the Logger */
 	create_logger();
 
-	log_msg("=== Log File ===");
+	/* Log to file */
+	log_msg("Server Started!");
 
 	/* Some useful variables */
 	int listenfd = 0, connfd = 0;

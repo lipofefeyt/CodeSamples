@@ -18,19 +18,20 @@
 #include <time.h>
 
 /* 
- * Function:	read_config
+ * @Function:	read_config
  * ----------------------------
- * Function that reads the current server configuration from an input file.
+ * @Brief:		Function that reads the current server configuration from an 
+ * 				input file.
  *  
  */
-void read_config();
+void read_config (void);
 
 
 /* 
- * Function:	main
+ * @Function:	main
  * ----------------------------
- * Main function to run a server and make it listen to all the available 
- * interfaces (INADDR_ANY).
+ * @Brief:		Main function to run a server and make it listen to all the 
+ * 				available interfaces (INADDR_ANY).
  *  
  */
-int main(int argc, char *argv[]);
+int main (int argc, char *argv[]);

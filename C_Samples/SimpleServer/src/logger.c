@@ -6,14 +6,15 @@
  */
 
 #include "logger.h"
+#include "timer.h"
 
 /* 
- * Function:	create_logger
+ * @Function:	create_logger
  * ----------------------------
- * Initialize the Logger object.
+ * @Brief:		Initialize the Logger object.
  *  
  */
-void create_logger(void) {
+void create_logger (void) {
 
 	/* Create and initialize the Logger */
 	logger = (Logger*)malloc(sizeof(Logger*));
@@ -24,12 +25,12 @@ void create_logger(void) {
 }
 
 /* 
- * Function:	delete_logger
+ * @Function:	delete_logger
  * ----------------------------
- * Delete the Logger object.
+ * @Brief:		Delete the Logger object.
  *  
  */
-void delete_logger(void) {
+void delete_logger (void) {
 
 	/* Check if it's not NULL */
 	if(logger != NULL) { 
@@ -45,18 +46,22 @@ void delete_logger(void) {
 }
 
 /* 
- * Function:	log_msg
+ * @Function:	log_msg
  * ----------------------------
- * Logs the message to thw log file
+ * @Brief:		Logs the message to thw log file
  * 
- * Params:
- * @msg The message to be written
+ * @Params:
+ * msg:			The message to be logged
  *  
  */
-int log_msg(char* msg) {
+int log_msg (char* msg) {
+
+	/* The output */
+	char* log_msg = malloc(256);
+
+	/* Log time with message */
+	sprintf(log_msg, "%s | %s", get_time_string(), msg);
 
 	/* Write to the file */
-	fprintf(logger->f_pointer, msg);
-
-	return 1;
+	return fprintf(logger->f_pointer, log_msg);
 }
