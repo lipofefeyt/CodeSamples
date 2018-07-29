@@ -1,8 +1,8 @@
 /*
- *	@Name:		timer.h
+ *  @Name:		timer.h
  *
- *	@Author:	lipofefeyt
- *	@Date:		23/07/2018
+ *  @Author:	lipofefeyt
+ *  @Date:		23/07/2018
  */
 
 #include <time.h>

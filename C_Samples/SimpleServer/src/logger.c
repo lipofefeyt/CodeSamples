@@ -1,7 +1,7 @@
 /*
- *	@Name:		logger.c
+ *  @Name:		logger.c
  *
- *	@Author:	lipofefeyt
+ *  @Author:	lipofefeyt
  *  @Date:		20/06/2018
  */
 
@@ -57,7 +57,7 @@ void delete_logger (void) {
 int log_msg (char* msg) {
 
 	/* The output */
-	char* log_msg = malloc(256);
+	char* log_msg = malloc(MAX_LOG_MSG_SIZE);
 
 	/* Log time with message */
 	sprintf(log_msg, "%s | %s", get_time_string(), msg);

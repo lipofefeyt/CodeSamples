@@ -1,7 +1,7 @@
 /*
- *	@Name:		timer.c
+ *  @Name:		timer.c
  *
- *	@Author:	lipofefeyt
+ *  @Author:	lipofefeyt
  *  @Date:		23/07/2018
  */
 
@@ -28,7 +28,8 @@ void init_timer (void) {
 /* 
  * @Function:	get_time_string
  * ----------------------------
- * @Brief:		Gets the current time, formatted as %dd%MM%yyyy_%hh%mm%ss.
+ * @Brief:		Gets the current time, formatted as d/%m/%Y %H:%M:%S. This is
+ * 				typically used for logging.
  *  
  */
 char* get_time_string (void) {
@@ -42,7 +43,30 @@ char* get_time_string (void) {
 	}
 
 	/* Output the current year into the result string */
-	strftime(output, LOG_DATE_SIZE, "%d/%m/%Y %H:%M:%S", timer->timeinfo);
+	strftime(output, LOG_MSG_DATE_SIZE, "%d/%m/%Y %H:%M:%S", timer->timeinfo);
+		
+	return output;
+}
+
+/* 
+ * @Function:	get_log_time_name
+ * ----------------------------
+ * @Brief:		Gets the time format for the log file name formatted as 
+ * 				%d%m%Y_%H%M%S.
+ *  
+ */
+char* get_log_time_name (void) {
+
+	/* Result */
+	char* output = malloc(16);
+
+	/* Initialize the timer if it has not been yet */
+	if (timer == 0) {
+		init_timer ();
+	}
+
+	/* Output the current year into the result string */
+	strftime(output, LOG_MSG_DATE_SIZE, "%d%m%Y_%H%M%S", timer->timeinfo);
 		
 	return output;
 }

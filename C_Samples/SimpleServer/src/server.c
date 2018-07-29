@@ -1,7 +1,7 @@
 /*
- *	@Name:		server.c
+ *  @Name:		server.c
  *
- *	@Author:	lipofefeyt
+ *  @Author:	lipofefeyt
  *  @Date:		03/06/2018
  */
 
@@ -13,17 +13,6 @@
 /* Link with global Logger */
 Logger* logger;
 Timer* timer;
-
-/* 
- * @Function:	read_config
- * ----------------------------
- * @Brief:		Function that reads the current server configuration from an 
- * 				input file.
- *  
- */
-void read_config (void) {
-	/* TODO */
-}
 
 /* 
  * Function:	main

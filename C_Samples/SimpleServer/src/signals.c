@@ -1,7 +1,7 @@
 /*
- *	@Name:		signals.c
+ *  @Name:		signals.c
  *
- *	@Author:	lipofefeyt
+ *  @Author:	lipofefeyt
  *  @Date:		23/06/2018
  */
 

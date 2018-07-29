@@ -1,8 +1,8 @@
 #
-#	@Name:		makefile
+#  @Name:		makefile
 #
-#	@Author:	lipofefeyt	
-#	@Date:		03/06/2018
+#  @Author:		lipofefeyt	
+#  @Date:		03/06/2018
 #
 
 # Typical directories to use
