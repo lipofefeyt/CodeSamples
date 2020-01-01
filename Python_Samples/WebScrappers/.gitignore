@@ -1,0 +1,6 @@
+# Ignore the pre-compiled stuff
+/__pycache__/
+*.pyc
+
+# Ignore the virtualenv
+/venv/
