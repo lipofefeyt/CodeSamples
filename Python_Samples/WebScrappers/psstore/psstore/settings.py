@@ -18,8 +18,8 @@ NEWSPIDER_MODULE = 'psstore.spiders'
 LOG_LEVEL = 'INFO'
 
 # Define output format
-FEED_FORMAT="csv"
-FEED_URI="psstore.csv"
+# FEED_FORMAT="csv"
+# FEED_URI="psstore.csv"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'psstore (+http://www.yourdomain.com)'

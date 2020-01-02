@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 import scrapy
+from ..file_writer import FileWriter
 
 class PsstoreGamesSpider(scrapy.Spider):
-    
+
     # Private attributes
+    _filewriter = FileWriter()
+
     name = 'psstore_games'
     allowed_domains = ['https://store.playstation.com/fr-be/grid/STORE-MSF75508-PS4CAT/1?emcid=em-st-231260&et_cid=em_384465&et_rid=13278658']
     # start_urls = [
@@ -47,5 +50,8 @@ class PsstoreGamesSpider(scrapy.Spider):
                 'game' : data[0],
                 'price' : data[1]
             } 
+
+            self._filewriter.write(data[0].encode("utf-8") + " - " + data[1].encode("utf-8") + "\n")
+            # print(data[0].encode("utf-8") + " - " + data[1].encode("utf-8") + "\n")
 
             yield game_catalog
