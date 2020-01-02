@@ -4,3 +4,6 @@
 
 # Ignore the virtualenv
 /venv/
+
+# Ignore project settings
+.vscode
