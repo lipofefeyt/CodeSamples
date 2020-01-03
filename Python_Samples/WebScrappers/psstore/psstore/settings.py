@@ -9,6 +9,8 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+ARCH_PATH = 'archive/'
+
 BOT_NAME = 'psstore'
 
 SPIDER_MODULES = ['psstore.spiders']
@@ -70,9 +72,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'psstore.pipelines.PsstorePipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'psstore.pipelines.PsstorePipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

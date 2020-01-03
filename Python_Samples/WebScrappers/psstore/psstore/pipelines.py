@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
-
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-
+from file_writer import FileWriter
 
 class PsstorePipeline(object):
+    # Class that serves as pipeline to process each of the saved data items
+
+    # Private attributes
+    _filewriter = FileWriter()
+
     def process_item(self, item, spider):
+
+        self._filewriter.write(item['game'].encode("utf-8") + " | " + item['price'].encode("utf-8") + "\n")
+
         return item
