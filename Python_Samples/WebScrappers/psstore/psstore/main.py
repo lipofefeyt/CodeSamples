@@ -4,32 +4,40 @@ from scrapy.utils.project import get_project_settings
 
 import getopt 
 import argparse
-import sys
 
 from settings import * 
+from items import *
 
-# Get all cmd line args
-args_list = sys.argv[1:]
+def main():
 
-unix_opts = "ho:v"
-gnu_opts = ["help", "output=", "verbose"]
+    # Get all cmd line args
+    args_list = sys.argv[1:]
 
-# Define the program description
-text = 'This is the entry point of the PSN webscraper.'
+    unix_opts = "ho:v"
+    gnu_opts = ["help", "output=", "verbose"]
 
-# Initiate the parser with a description
-parser = argparse.ArgumentParser(description = text)
-parser.add_argument("-v", "--version", help="show program version", action="store_true")
-parser.add_argument("-r", "--run", help="run the PSN spider", action="store_true")
+    # Define the program description
+    text = 'This is the entry point of the PSN webscraper.'
 
-args = parser.parse_args()
+    # Initiate the parser with a description
+    parser = argparse.ArgumentParser(description = text)
+    parser.add_argument("-v", "--version", help="show program version", action="store_true")
+    parser.add_argument("-r", "--run", help="run the PSN spider", action="store_true")
 
-# Print the version
-if args.version:
-    print("%s v%d.%d.%d" %(APP_NAME, RELEASE, VERSION, REVISION))
-elif args.run:
-    process = CrawlerProcess(get_project_settings())
+    args = parser.parse_args()
 
-    # TODO: To be updated for all the spiders
-    process.crawl('psstore_games', domain='')
-    process.start() 
+    # Print the version
+    if args.version:
+        print("%s v%d.%d.%d" %(APP_NAME, RELEASE, VERSION, REVISION))
+    elif args.run:
+        process = CrawlerProcess(get_project_settings())
+
+        # TODO: To be updated for all the spiders
+        process.crawl('psstore_games', domain='')
+        process.start() 
+
+if __name__ == '__main__' and __package__ is None: 
+    from os import sys, path 
+    sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+
+    main()

@@ -2,6 +2,8 @@
 import scrapy
 
 class PsstoreItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    # This class defines an item from the PSN store
+
+    # Get the different fields
+    game_name = scrapy.Field()
+    game_price = scrapy.Field()

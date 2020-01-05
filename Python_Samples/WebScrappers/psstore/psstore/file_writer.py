@@ -21,7 +21,7 @@ class FileWriter:
             print("File not accessible")
 
     def end(self):
-        # This method closes the file
+        # This method closes the opened file
 
         self._file.close()
 

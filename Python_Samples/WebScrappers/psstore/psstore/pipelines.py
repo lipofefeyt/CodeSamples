@@ -9,6 +9,7 @@ class PsstorePipeline(object):
 
     def process_item(self, item, spider):
 
-        self._filewriter.write(item['game'].encode("utf-8") + " | " + item['price'].encode("utf-8") + "\n")
+        self._filewriter.write(item['game_name'].encode("utf-8") + " | " \
+                            + item['game_price'].encode("utf-8") + "\n")
 
         return item

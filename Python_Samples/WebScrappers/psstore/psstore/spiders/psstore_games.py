@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
 
+from ..items import PsstoreItem
+
 class PsstoreGamesSpider(scrapy.Spider):
 
     name = 'psstore_games'
@@ -31,10 +33,14 @@ class PsstoreGamesSpider(scrapy.Spider):
 
         # Process the data
         for data in psn_data:
-            game_catalog = {
-                # 'url' : response.url,
-                'game' : data[0],
-                'price' : data[1]
-            } 
 
-            yield game_catalog
+            game = PsstoreItem()
+            game['game_name'] = data[0]
+            game['game_price'] = data[1]
+
+            # game_catalog = {
+            #     # 'url' : response.url,
+            #     PsstoreItem(_game_name = data[0], _game_price = data[1])
+            # } 
+
+            yield game
