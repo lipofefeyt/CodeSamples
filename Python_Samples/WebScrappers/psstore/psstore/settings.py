@@ -1,16 +1,18 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for psstore project
-#
-# For simplicity, this file contains only settings considered important or
-# commonly used. You can find more settings consulting the documentation:
-#
-#     https://docs.scrapy.org/en/latest/topics/settings.html
-#     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+# Name
+APP_NAME = "WebScrappers"
 
+# Version / Issue / Release
+RELEASE = 0
+VERSION = 0
+REVISION = 1
+
+# Paths
 ARCH_PATH = 'archive/'
 
+# FIXME: Should be a list for further spiders
+# Bot name
 BOT_NAME = 'psstore'
 
 SPIDER_MODULES = ['psstore.spiders']
