@@ -7,6 +7,7 @@ import argparse
 
 from settings import * 
 from items import *
+from arch_handler import *
 
 def main():
 
@@ -22,6 +23,7 @@ def main():
     # Initiate the parser with a description
     parser = argparse.ArgumentParser(description = text)
     parser.add_argument("-v", "--version", help="show program version", action="store_true")
+    parser.add_argument("-p", "--parse", help="parse and process the archived data", action="store_true")
     parser.add_argument("-r", "--run", help="run the PSN spider", action="store_true")
 
     args = parser.parse_args()
@@ -29,6 +31,14 @@ def main():
     # Print the version
     if args.version:
         print("%s v%d.%d.%d" %(APP_NAME, RELEASE, VERSION, REVISION))
+    
+    # Parse the archive
+    elif args.parse:
+        
+        arch_handler = ArchHandler()
+        arch_handler.parse()
+
+    # Run the spiders
     elif args.run:
         process = CrawlerProcess(get_project_settings())
 
