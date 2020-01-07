@@ -10,6 +10,7 @@ REVISION = 1
 
 # Paths
 ARCH_PATH = 'archive/'
+DATA_PATH = 'data/'
 
 # FIXME: Should be a list for further spiders
 # Bot name
