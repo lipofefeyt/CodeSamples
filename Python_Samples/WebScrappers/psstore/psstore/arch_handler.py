@@ -11,10 +11,6 @@ class ArchHandler:
     _file = None
     _file_path = ARCH_PATH
 
-    def __init__(self):
-        # self._file = open(os.path.join(self._file_path, str(strftime("%Y%m%d", gmtime())) + "___psstore_games"), "w+")
-        pass
-
     def parse(self):
         # Parse every archived file
 

@@ -24,7 +24,7 @@ def main():
     parser = argparse.ArgumentParser(description = text)
     parser.add_argument("-v", "--version", help="show program version", action="store_true")
     parser.add_argument("-p", "--parse", help="parse and process the archived data", action="store_true")
-    parser.add_argument("-r", "--report", help="run the PSN spider", action="store_true")
+    parser.add_argument("-r", "--run", help="run the PSN spider", action="store_true")
 
     args = parser.parse_args()
 
@@ -33,7 +33,7 @@ def main():
         print("%s v%d.%d.%d" %(APP_NAME, RELEASE, VERSION, REVISION))
     
     # Report the archived data
-    elif args.report:
+    elif args.parse:
         arch_handler = ArchHandler()
         arch_handler.parse()
 

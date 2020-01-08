@@ -38,9 +38,4 @@ class PsstoreGamesSpider(scrapy.Spider):
             game['game_name'] = data[0]
             game['game_price'] = data[1]
 
-            # game_catalog = {
-            #     # 'url' : response.url,
-            #     PsstoreItem(_game_name = data[0], _game_price = data[1])
-            # } 
-
             yield game
