@@ -42,11 +42,17 @@ class ArchHandler:
                 out_file_name = out_file_name.replace("/", "_")
 
                 # Open the file
-                file = open(os.path.join(DATA_PATH, out_file_name), 'a')
+                file = open(os.path.join(DATA_PATH, out_file_name), 'a+')
+
+                # Skip repeated dates
+                if(file_date in file.read()):
+                    continue
+
                 writer = csv.writer(file)
 
                 try:
                     games_dict[game_name][file_date] = game_price
                     writer.writerow([file_date, games_dict[game_name][file_date].rstrip()])
+                        
                 except KeyError:
                     games_dict[game_name] = {}
