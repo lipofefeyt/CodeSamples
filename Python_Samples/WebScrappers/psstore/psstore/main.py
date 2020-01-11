@@ -24,7 +24,8 @@ def main():
     parser = argparse.ArgumentParser(description = text)
     parser.add_argument("-v", "--version", help="show program version", action="store_true")
     parser.add_argument("-p", "--parse", help="parse and process the archived data", action="store_true")
-    parser.add_argument("-r", "--run", help="run the PSN spider", action="store_true")
+    parser.add_argument("-r", "--run", help="run the spider", action="store_true")
+    parser.add_argument("-l", "--plot", help="plot the harvested data", action="store_true")
 
     args = parser.parse_args()
 
@@ -44,6 +45,11 @@ def main():
         # TODO: To be updated for all the spiders
         process.crawl('psstore_games', domain='')
         process.start() 
+
+    # Plot the data
+    elif args.plot:
+        arch_handler = ArchHandler()
+        arch_handler.plot()
 
 if __name__ == '__main__' and __package__ is None: 
     from os import sys, path 
