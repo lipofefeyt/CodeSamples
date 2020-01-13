@@ -71,7 +71,7 @@ class ArchHandler:
             return
 
         # Process the archive
-        for file_name in os.listdir(DATA_PATH):
+        for index, file_name in enumerate(os.listdir(DATA_PATH)):
             
             # Open the file
             file_fd = open(os.path.join(DATA_PATH, file_name), 'r')
@@ -83,17 +83,26 @@ class ArchHandler:
             # Every line of the data file            
             for data_line in file_fd.readlines():
                 x_values.append(data_line.split(",")[0])
-                y_values.append(data_line.split(",")[1])
+                y_values.append(data_line.split(",")[1].lstrip('\"').replace("€",""))
 
-            # print(file_name)
+                # print("========== VAL =========== " + str(data_line.split(",")[1].lstrip('\"')))
 
             # File name trimming
             out_file_name = file_name.replace(" ", "_")
             out_file_name = out_file_name.replace("/", "_")
             out_file_name = unidecode.unidecode(out_file_name.decode('UTF-8'))
 
+            print("-------------------------------------------------")
+            print("==== FILE: ==== %s" %(out_file_name))
+            print("==== X_VALS ====" + str(x_values))
+            print("==== Y_VALS ====" + str(y_values))
+            print("-------------------------------------------------")
+
+
+            # Save the plots
             plt.plot(x_values, y_values)
-            plt.ylabel('some numbers')
+            plt.ylabel(out_file_name)
+            plt.xticks(rotation='vertical')
             plt.savefig(os.path.join("plots", str(out_file_name + ".png")))
-            # plt.show()
+            plt.clf()
 
