@@ -4,6 +4,7 @@ from scrapy.utils.project import get_project_settings
 
 import getopt 
 import argparse
+import logging
 
 from settings import * 
 from items import *
@@ -27,7 +28,13 @@ def main():
     parser.add_argument("-r", "--run", help="run the spider", action="store_true")
     parser.add_argument("-l", "--plot", help="plot the harvested data", action="store_true")
 
+    # Parse all the arguments
     args = parser.parse_args()
+
+    # Initiate logging
+    # FIXME: Needs adjusting
+    logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
+    logging.info('Start application')
 
     # Print the version
     if args.version:

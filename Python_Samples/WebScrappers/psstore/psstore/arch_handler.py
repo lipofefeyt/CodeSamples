@@ -5,6 +5,8 @@ import sys
 import os
 import csv
 import unidecode
+import logging
+
 import matplotlib.pyplot as plt
 
 # Our own libs
@@ -24,19 +26,26 @@ class ArchHandler:
         # Create data dir if not present
         if not os.path.exists(DATA_PATH):
             os.makedirs(DATA_PATH)
+            logging.info("%s was created." %(DATA_PATH))
 
         # Process the archive
         for file in os.listdir(ARCH_PATH):
                 
+            logging.info("File '%s' being processed..." %(file))
+
             # Get file attributes
             file_date = file.split('_')[0]
             file_name = os.path.join(ARCH_PATH, file)
 
             # Open the archive file
             fd = open(file_name, "r")
+            arch_lines = fd.readlines()
+            arch_len = len(arch_lines)
 
             # Every line of the archive            
-            for line in fd.readlines():
+            for index, line in enumerate(arch_lines):
+
+                logging.info("Line %d/%d." %((index + 1), arch_len))
 
                 # Game attributes
                 game_name = line.split(' | ')[0]
@@ -68,11 +77,16 @@ class ArchHandler:
 
         # Exit if the data folder is not present
         if not os.path.exists(DATA_PATH):
+            logging.error("%s does not exist." %(DATA_PATH))
             return
 
+        # Get the files
+        arch_files = os.listdir(DATA_PATH)
+        arch_len = len(arch_files)
+
         # Process the archive
-        for index, file_name in enumerate(os.listdir(DATA_PATH)):
-            
+        for index, file_name in enumerate(arch_files):
+        
             # Open the file
             file_fd = open(os.path.join(DATA_PATH, file_name), 'r')
             
@@ -85,24 +99,18 @@ class ArchHandler:
                 x_values.append(data_line.split(",")[0])
                 y_values.append(data_line.split(",")[1].lstrip('\"').replace("€",""))
 
-                # print("========== VAL =========== " + str(data_line.split(",")[1].lstrip('\"')))
-
             # File name trimming
             out_file_name = file_name.replace(" ", "_")
             out_file_name = out_file_name.replace("/", "_")
             out_file_name = unidecode.unidecode(out_file_name.decode('UTF-8'))
+            fig_name = os.path.join("plots", str(out_file_name + ".png"))
 
-            print("-------------------------------------------------")
-            print("==== FILE: ==== %s" %(out_file_name))
-            print("==== X_VALS ====" + str(x_values))
-            print("==== Y_VALS ====" + str(y_values))
-            print("-------------------------------------------------")
-
-
-            # Save the plots
+            # Save the plots and clear the lib
             plt.plot(x_values, y_values)
             plt.ylabel(out_file_name)
             plt.xticks(rotation='vertical')
-            plt.savefig(os.path.join("plots", str(out_file_name + ".png")))
+            plt.savefig(fig_name)
             plt.clf()
+
+            logging.info("File %d/%d -> Plot generated in '%s'" %((index +1 ), arch_len, fig_name))
 
