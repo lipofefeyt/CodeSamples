@@ -112,5 +112,5 @@ class ArchHandler:
             plt.savefig(fig_name)
             plt.clf()
 
-            logging.info("File %d/%d -> Plot generated in '%s'" %((index +1 ), arch_len, fig_name))
+            logging.info("File %d/%d -> Plot generated in '%s'" %((index + 1), arch_len, fig_name))
 

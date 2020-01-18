@@ -10,6 +10,12 @@ class FileWriter:
     _file_path = ARCH_PATH
 
     def __init__(self):
+
+        # Create archive dir if not present
+        if not os.path.exists(ARCH_PATH):
+            os.makedirs(ARCH_PATH)
+            logging.info("%s was created." %(ARCH_PATH))
+
         self._file = open(os.path.join(self._file_path, str(strftime("%Y%m%d", gmtime())) + "___psstore_games"), "w+")
 
     def write(self, content):
