@@ -99,6 +99,9 @@ class ArchHandler:
                 x_values.append(data_line.split(",")[0])
                 y_values.append(data_line.split(",")[1].lstrip('\"').replace("€",""))
 
+            logging.debug("X Values: " + str(x_values))
+            logging.debug("Y     Values: " + str(y_values))
+            
             # File name trimming
             out_file_name = file_name.replace(" ", "_")
             out_file_name = out_file_name.replace("/", "_")
@@ -106,7 +109,6 @@ class ArchHandler:
             fig_name = os.path.join("plots", str(out_file_name + ".png"))
 
             # Save the plots and clear the lib
-            plt.plot(x_values, y_values)
             plt.ylabel(out_file_name)
             plt.xticks(rotation='vertical')
             plt.savefig(fig_name)
