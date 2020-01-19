@@ -31,11 +31,11 @@ class ArchHandler:
         # Process the archive
         for file in os.listdir(ARCH_PATH):
                 
-            logging.info("File '%s' being processed..." %(file))
-
             # Get file attributes
             file_date = file.split('_')[0]
             file_name = os.path.join(ARCH_PATH, file)
+            
+            logging.info("File '%s' being processed..." %(file_name))
 
             # Open the archive file
             fd = open(file_name, "r")
@@ -45,7 +45,7 @@ class ArchHandler:
             # Every line of the archive            
             for index, line in enumerate(arch_lines):
 
-                logging.info("Line %d/%d." %((index + 1), arch_len))
+                # logging.debug("Line %d/%d." %((index + 1), arch_len))
 
                 # Game attributes
                 game_name = line.split(' | ')[0]
@@ -109,8 +109,17 @@ class ArchHandler:
             fig_name = os.path.join("plots", str(out_file_name + ".png"))
 
             # Save the plots and clear the lib
+            plt.plot(x_values, y_values)
             plt.ylabel(out_file_name)
+            
+            # Format the XX
             plt.xticks(rotation='vertical')
+            plt.tight_layout()
+
+            # Fix the YY
+            plt.gca().invert_yaxis()
+
+            # Save the image
             plt.savefig(fig_name)
             plt.clf()
 
