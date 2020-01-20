@@ -96,11 +96,20 @@ class ArchHandler:
 
             # Every line of the data file            
             for data_line in file_fd.readlines():
-                x_values.append(data_line.split(",")[0])
-                y_values.append(data_line.split(",")[1].lstrip('\"').replace("€",""))
 
-            logging.debug("X Values: " + str(x_values))
-            logging.debug("Y     Values: " + str(y_values))
+                # Handle free games
+                # FIXME: Has to handle several languages
+                x_value = data_line.split(",")[0]
+                if "Gratuit" in x_value:
+                    x_value = 0
+                y_value = data_line.split(",")[1].lstrip('\"').replace("€","")
+
+                # Add the values
+                x_values.append(x_value)
+                y_values.append(y_value)
+
+            logging.info("X Values: " + str(x_values))
+            logging.info("Y Values: " + str(y_values))
             
             # File name trimming
             out_file_name = file_name.replace(" ", "_")
@@ -115,9 +124,6 @@ class ArchHandler:
             # Format the XX
             plt.xticks(rotation='vertical')
             plt.tight_layout()
-
-            # Fix the YY
-            plt.gca().invert_yaxis()
 
             # Save the image
             plt.savefig(fig_name)

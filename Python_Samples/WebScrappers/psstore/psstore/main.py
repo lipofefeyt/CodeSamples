@@ -24,7 +24,7 @@ def main():
     # Initiate the parser with a description
     parser = argparse.ArgumentParser(description = text)
     parser.add_argument("-v", "--version", help="show program version", action="store_true")
-    parser.add_argument("-c", "--chain", help="parse and process the archived data", action="store_true")
+    parser.add_argument("-c", "--chain", help="run the complete chain", action="store_true")
     parser.add_argument("-p", "--parse", help="parse and process the archived data", action="store_true")
     parser.add_argument("-r", "--run", help="run the spider", action="store_true")
     parser.add_argument("-l", "--plot", help="plot the harvested data", action="store_true")
