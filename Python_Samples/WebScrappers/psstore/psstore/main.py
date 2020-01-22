@@ -5,6 +5,7 @@ from scrapy.utils.project import get_project_settings
 import getopt 
 import argparse
 import logging
+import time
 
 from settings import * 
 from items import *
@@ -43,15 +44,20 @@ def main():
     
     # Run the full chain
     if args.chain:
-        run_chain()        
+
+        # FIXME: Have to add a decorator for god's sake
+        logging.info("Running the full chain...")
+        chain_start_time = time.time()
+        run_chain()
+        logging.info("Finished in %s seconds." %(time.time() - chain_start_time))
 
     # Run the spiders
     elif args.run:
-        run_spider()        
+        run_spider()       
     
     # Report the archived data
     elif args.parse:
-        run_parse()
+        run_parse() 
 
     # Plot the datasets
     elif args.plot:
@@ -68,23 +74,41 @@ def run_chain():
 def run_spider():
     # Run the dedicated spider
 
+    # FIXME: Have to add a decorator for god's sake
+    logging.info("Running the spider...")
+    spider_init_time = time.time()
+
     process = CrawlerProcess(get_project_settings())
 
     # TODO: To be updated for all the spiders
     process.crawl('psstore_games', domain='')
     process.start() 
 
+    logging.info("Finished in %s seconds." %(time.time() - spider_init_time)) 
+
 def run_parse():
     # Parse the archived data
+
+    # FIXME: Have to add a decorator for god's sake
+    logging.info("Running the parser...")
+    parse_init_time = time.time()
 
     arch_handler = ArchHandler()
     arch_handler.parse()
 
+    logging.info("Finished in %s seconds." %(time.time() - parse_init_time))  
+
 def run_plot():
     # Plot the datasets
 
+    # FIXME: Have to add a decorator for god's sake
+    logging.info("Generating the plots...")
+    plot_init_time = time.time()
+
     arch_handler = ArchHandler()
     arch_handler.plot()
+
+    logging.info("Finished in %s seconds." %(time.time() - plot_init_time))  
 
 if __name__ == '__main__' and __package__ is None: 
     from os import sys, path 

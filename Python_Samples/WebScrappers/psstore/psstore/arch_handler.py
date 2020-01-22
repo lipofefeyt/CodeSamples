@@ -45,8 +45,6 @@ class ArchHandler:
             # Every line of the archive            
             for index, line in enumerate(arch_lines):
 
-                # logging.debug("Line %d/%d." %((index + 1), arch_len))
-
                 # Game attributes
                 game_name = line.split(' | ')[0]
                 game_price = line.split(' | ')[1]

@@ -5,12 +5,15 @@ APP_NAME = "WebScrappers"
 
 # Version / Issue / Release
 RELEASE = 0
-VERSION = 0
-REVISION = 1
+VERSION = 1
+REVISION = 3
 
 # Paths
 ARCH_PATH = 'archive/'
 DATA_PATH = 'data/'
+
+# Extension
+ARCH_NAME_EXT = "___psstore_games"
 
 # FIXME: Should be a list for further spiders
 # Bot name
