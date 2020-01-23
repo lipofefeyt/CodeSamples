@@ -106,8 +106,8 @@ class ArchHandler:
                 x_values.append(x_value)
                 y_values.append(y_value)
 
-            logging.info("X Values: " + str(x_values))
-            logging.info("Y Values: " + str(y_values))
+            # logging.info("X Values: " + str(x_values))
+            # logging.info("Y Values: " + str(y_values))
             
             # File name trimming
             out_file_name = file_name.replace(" ", "_")
