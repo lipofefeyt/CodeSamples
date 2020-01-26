@@ -129,3 +129,43 @@ class ArchHandler:
 
             logging.info("File %d/%d -> Plot generated in '%s'" %((index + 1), arch_len, fig_name))
 
+    def report(self):
+        # Function to report notable price evolutions
+
+        # Exit if the data folder is not present
+        if not os.path.exists(DATA_PATH):
+            logging.error("%s does not exist." %(DATA_PATH))
+            return
+
+        # Get the files
+        arch_files = os.listdir(DATA_PATH)
+        arch_len = len(arch_files)
+
+        # Process the archive
+        for index, file_name in enumerate(arch_files):
+        
+            # Open the file
+            file_fd = open(os.path.join(DATA_PATH, file_name), 'r')
+            
+            # We'll need this
+            x_values = []
+            y_values = []
+
+            # Every line of the data file            
+            for data_line in file_fd.readlines():
+
+                # Handle free games
+                # FIXME: Has to handle several languages
+                x_value = data_line.split(",")[0]
+                if "Gratuit" in x_value:
+                    x_value = 0
+                y_value = data_line.split(",")[1].lstrip('\"').replace("€","")
+
+                # Add the values
+                x_values.append(x_value)
+                y_values.append(y_value)
+
+        # TODO: Get the average price
+        # TODO: Get the min price per game
+        # TODO: Get the max price per game
+        # TODO: Get the num price variations per game 

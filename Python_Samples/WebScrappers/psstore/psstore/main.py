@@ -29,6 +29,7 @@ def main():
     parser.add_argument("-p", "--parse", help="parse and process the archived data", action="store_true")
     parser.add_argument("-r", "--run", help="run the spider", action="store_true")
     parser.add_argument("-l", "--plot", help="plot the harvested data", action="store_true")
+    parser.add_argument("-e", "--report", help="report the most notable price changes", action="store_true")
 
     # Parse all the arguments
     args = parser.parse_args()
@@ -62,6 +63,10 @@ def main():
     # Plot the datasets
     elif args.plot:
         run_plot()
+
+    # Provide a report
+    elif args.report:
+        run_report()
 
 # Functions for options
 def run_chain():
@@ -109,6 +114,11 @@ def run_plot():
     arch_handler.plot()
 
     logging.info("Finished in %s seconds." %(time.time() - plot_init_time))  
+
+def run_report():
+    # Provide a useful report
+
+    
 
 if __name__ == '__main__' and __package__ is None: 
     from os import sys, path 
