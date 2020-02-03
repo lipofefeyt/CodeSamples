@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
-from file_writer import FileWriter
+from file_writer import *
 
 class PsstorePipeline(object):
     # Class that serves as pipeline to process each of the saved data items
 
-    # Private attributes
-    _filewriter = FileWriter()
-
     def process_item(self, item, spider):
+        """ Processes the item being currently scraped """
 
-        self._filewriter.write(item['game_name'].encode("utf-8") + " | " \
-                            + item['game_price'].encode("utf-8") + "\n")
+        write_archive(item['game_name'].encode("utf-8") + " | " \
+                            + item['game_price'].encode("utf-8"))
 
         return item

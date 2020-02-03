@@ -44,8 +44,7 @@ class ArchHandler:
 
             # Every line of the archive            
             for index, line in enumerate(arch_lines):
-
-                # Game attributes
+                
                 game_name = line.split(' | ')[0]
                 game_price = line.split(' | ')[1]
 
@@ -69,6 +68,9 @@ class ArchHandler:
                         
                 except KeyError:
                     games_dict[game_name] = {}
+
+            # Close the file
+            fd.close()
 
     def plot(self):
         # Function to plot the harvested data
